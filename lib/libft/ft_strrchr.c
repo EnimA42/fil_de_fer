@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/25 18:28:11 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 18:28:16 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	int		cur;
+	char	*s2;
 
-#endif
+	s2 = (char*)s;
+	cur = ft_strlen(s2);
+	while (cur--)
+		if (s2[cur] == (char)c)
+			return (&s2[cur]);
+	return ((char)c == '\0' ? &s2[ft_strlen(s2)] : NULL);
+}

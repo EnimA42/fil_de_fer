@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/12/15 17:06:24 by aderragu          #+#    #+#             */
+/*   Updated: 2015/12/15 17:07:34 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+void	ft_swap(int *a, int *b)
+{
+	int tmp;
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
-
-#endif
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}

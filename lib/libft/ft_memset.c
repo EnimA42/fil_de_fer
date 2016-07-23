@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/23 15:54:41 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/23 15:54:44 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*str2;
 
-#endif
+	str2 = b;
+	while (len--)
+		*str2++ = (unsigned char)c;
+	return (b);
+}

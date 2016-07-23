@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/26 19:02:31 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/26 19:02:32 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+void	ft_striter(char *s, void (*f)(char *))
+{
+	int	cur;
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
-
-#endif
+	cur = -1;
+	while (s[++cur])
+		f(&s[cur]);
+}

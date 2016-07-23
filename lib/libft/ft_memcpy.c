@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/23 17:47:29 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/23 17:47:40 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char	*str;
+	unsigned char	*str2;
+	int				cur;
 
-#endif
+	cur = 0;
+	str = (unsigned char*)dst;
+	str2 = (unsigned char*)src;
+	while (n > 0)
+	{
+		str[cur] = str2[cur];
+		n--;
+		cur++;
+	}
+	return (dst);
+}

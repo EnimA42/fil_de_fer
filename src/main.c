@@ -10,15 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
-int 		main()
+int				key_func(int key, void *param)
 {
-	void	*mlx_i;
-	void	*win;
+	printf("je rentre %d\n", key);
+	return (1);
+}
+
+int 			main()
+{
+	void		*mlx_i;
+	void		*win;
 
 	mlx_i = mlx_init();
 	win = mlx_new_window(mlx_i, 400, 400, "test");
+	mlx_key_hook(win, key_func, 0);
 	mlx_loop(mlx_i);
 	return (0);
 }

@@ -1,0 +1,53 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aderragu <aderragu@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/12/21 17:34:59 by aderragu          #+#    #+#              #
+#    Updated: 2015/12/28 11:37:38 by aderragu         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+.PHONY: all, clean, fclean, re
+
+SRC_PATH = ./src/
+SRC_NAME = 	main.c\
+
+OBJ = $(SRC_NAME:.c=.o)
+
+LIB_PATH = ./lib/
+LIB_NAME = 
+
+
+INC_PATH_L = $(LIB_PATH)libft/includes
+INC_PATH_P =
+
+NAME = fdf
+
+CC = gcc
+FLAGS =
+MLX = -lmlx -framework OpenGl -framework Appkit
+
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+LIB = $(addprefix $(LIB_PATH),$(LIB_NAME))
+
+$(NAME): $(SRC)
+	@make -C $(LIB_PATH)libft
+	@$(CC) $(SRC) -o $(NAME) -I $(INC_PATH_L) $(LIB_PATH)libft/libft.a $(MLX)
+	@echo "Compilation success"
+
+all: $(NAME)
+
+clean:
+	@make clean -C $(LIB_PATH)libft/
+	@rm -rf $(OBJ)
+	@echo "Delete .o"
+
+fclean: clean
+	@make fclean -C $(LIB_PATH)libft/
+	@rm -rf $(NAME)
+	@echo "Delete fdf"
+
+re: fclean all

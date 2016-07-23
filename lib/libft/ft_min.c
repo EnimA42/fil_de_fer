@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/12/15 17:57:02 by aderragu          #+#    #+#             */
+/*   Updated: 2015/12/15 17:57:04 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+int	ft_min(int *array, int size)
+{
+	int min;
+	int	cur;
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
-
-#endif
+	cur = 0;
+	min = array[0];
+	while (cur < size)
+	{
+		if (array[cur] < min)
+			min = array[cur];
+		cur++;
+	}
+	return (min);
+}

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/25 10:58:39 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 10:58:41 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+char	*ft_strcpy(char *dst, const char *src)
+{
+	int	cur;
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
-
-#endif
+	cur = -1;
+	while (src[++cur])
+		dst[cur] = src[cur];
+	dst[cur] = '\0';
+	return (dst);
+}

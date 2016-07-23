@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/25 11:34:13 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 11:34:16 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+char	*ft_strcat(char *s1, const char *s2)
+{
+	int	cur;
+	int	len;
 
-#endif
+	cur = -1;
+	len = ft_strlen(s1);
+	while (s2[++cur])
+		s1[len + cur] = s2[cur];
+	s1[len + cur] = '\0';
+	return (s1);
+}

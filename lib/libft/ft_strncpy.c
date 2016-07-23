@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/25 11:22:47 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 11:22:48 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	int	cur;
 
-#endif
+	cur = 0;
+	while (src[cur] && n)
+	{
+		dst[cur] = src[cur];
+		cur++;
+		n--;
+	}
+	while (n > 0)
+	{
+		dst[cur] = '\0';
+		n--;
+		cur++;
+	}
+	return (dst);
+}

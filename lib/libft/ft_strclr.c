@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/26 14:04:38 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/26 14:04:39 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+void		ft_strclr(char *s)
+{
+	int		cnt;
+	char	*str;
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
-
-#endif
+	str = s;
+	cnt = -1;
+	while (str[++cnt])
+		str[cnt] = '\0';
+}

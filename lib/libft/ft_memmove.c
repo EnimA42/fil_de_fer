@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   memmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/24 14:17:19 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/24 14:17:20 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*freemem;
 
-#endif
+	if ((freemem = malloc(sizeof(char) * len)) == NULL)
+		return (NULL);
+	ft_memcpy(freemem, src, len);
+	ft_memcpy(dst, freemem, len);
+	free(freemem);
+	return (dst);
+}

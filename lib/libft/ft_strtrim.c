@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/06/12 16:34:32 by aderragu         ###   ########.fr       */
+/*   Created: 2015/11/27 18:07:52 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/27 18:07:53 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-#include <libft.h>
-#include <stdio.h>
+char	*ft_strtrim(char const *s)
+{
+	int		start;
+	int		end;
 
-#endif
+	start = 0;
+	end = ft_strlen(s) - 1;
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	while ((s[end] == ' ' || s[end] == '\n' || s[end] == '\t') && end > start)
+		end--;
+	return (ft_strsub(s, start, end - start + 1));
+}
