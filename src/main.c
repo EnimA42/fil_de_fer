@@ -6,19 +6,12 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 18:28:38 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/07/23 18:41:03 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-<<<<<<< HEAD
-int 		main(int argc, char **argv)
-{
-	t_list	*begin;
-	void	*mlx_i;
-	void	*win;
-=======
 int				key_func(int key, void *param)
 {
 	printf("je rentre %d\n", key);
@@ -29,7 +22,7 @@ int 			main()
 {
 	void		*mlx_i;
 	void		*win;
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
+	t_list		*begin;
 
 	begin = create_list(begin);
 	recup_map(&begin, argv);
