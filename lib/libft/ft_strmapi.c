@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 15:59:56 by lbaudran         ###   ########.fr       */
+/*   Created: 2015/11/27 13:35:55 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/27 13:35:56 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-<<<<<<< HEAD
-#include <fcntl.h>
-=======
-#include <libft.h>
-#include <stdio.h>
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
-
-typedef struct		s_list
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
-}					t_list;
+	unsigned int		cur;
+	char				*str;
 
-#endif
+	cur = -1;
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str || f == NULL)
+		return (NULL);
+	while (s[++cur] && str)
+		str[cur] = f(cur, s[cur]);
+	str[ft_strlen(s)] = '\0';
+	return (str);
+}

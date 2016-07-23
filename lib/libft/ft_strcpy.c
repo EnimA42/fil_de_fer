@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 15:59:56 by lbaudran         ###   ########.fr       */
+/*   Created: 2015/11/25 10:58:39 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 10:58:41 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-
-#include <mlx.h>
-<<<<<<< HEAD
-#include <fcntl.h>
-=======
-#include <libft.h>
-#include <stdio.h>
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
-
-typedef struct		s_list
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
-}					t_list;
+	int	cur;
 
-#endif
+	cur = -1;
+	while (src[++cur])
+		dst[cur] = src[cur];
+	dst[cur] = '\0';
+	return (dst);
+}

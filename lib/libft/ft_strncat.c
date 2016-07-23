@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 15:59:56 by lbaudran         ###   ########.fr       */
+/*   Created: 2015/11/25 12:45:00 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 12:45:05 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-<<<<<<< HEAD
-#include <fcntl.h>
-=======
-#include <libft.h>
-#include <stdio.h>
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
-
-typedef struct		s_list
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
-}					t_list;
+	int		cur;
+	size_t	len;
 
-#endif
+	cur = -1;
+	len = ft_strlen(s1);
+	while (s2[++cur] && n--)
+		s1[len + cur] = s2[cur];
+	s1[len + cur] = '\0';
+	return (s1);
+}

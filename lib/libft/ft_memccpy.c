@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 15:59:56 by lbaudran         ###   ########.fr       */
+/*   Created: 2015/11/24 12:01:10 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/24 12:01:12 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-<<<<<<< HEAD
-#include <fcntl.h>
-=======
-#include <libft.h>
-#include <stdio.h>
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
-
-typedef struct		s_list
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
-}					t_list;
+	size_t			cpt;
+	unsigned char	*str;
 
-#endif
+	str = (unsigned char*)src;
+	cpt = 0;
+	while (cpt < n)
+	{
+		*(unsigned char*)dst++ = *(unsigned char*)src++;
+		if (str[cpt] == (unsigned char)c)
+			return (dst);
+		cpt++;
+	}
+	return (NULL);
+}

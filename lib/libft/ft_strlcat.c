@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 15:59:56 by lbaudran         ###   ########.fr       */
+/*   Created: 2015/11/25 12:59:20 by aderragu          #+#    #+#             */
+/*   Updated: 2015/11/25 12:59:23 by aderragu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "libft.h"
 
-#include <mlx.h>
-<<<<<<< HEAD
-#include <fcntl.h>
-=======
-#include <libft.h>
-#include <stdio.h>
->>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
-
-typedef struct		s_list
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
-}					t_list;
+	int		cur;
+	size_t	len;
 
-#endif
+	cur = 0;
+	len = ft_strlen(dst);
+	if (size > len)
+	{
+		while (len + cur < size - 1)
+		{
+			dst[len + cur] = src[cur];
+			cur++;
+		}
+		dst[len + cur] = '\0';
+	}
+	return (size < len ? size + ft_strlen(src) : len + ft_strlen(src));
+}

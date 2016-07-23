@@ -10,18 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
+<<<<<<< HEAD
 int 		main(int argc, char **argv)
 {
 	t_list	*begin;
 	void	*mlx_i;
 	void	*win;
+=======
+int				key_func(int key, void *param)
+{
+	printf("je rentre %d\n", key);
+	return (1);
+}
+
+int 			main()
+{
+	void		*mlx_i;
+	void		*win;
+>>>>>>> 35fd35b45e08778fcc04068ac159099ceb616304
 
 	begin = create_list(begin);
 	recup_map(&begin, argv);
 	mlx_i = mlx_init();
 	win = mlx_new_window(mlx_i, 400, 400, "test");
+	mlx_key_hook(win, key_func, 0);
 	mlx_loop(mlx_i);
 	return (0);
 }
