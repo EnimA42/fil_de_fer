@@ -30,4 +30,7 @@
 
 # Debug files
 *.dSYM/
-*.su
+*.s
+
+# Hided files
+.**
