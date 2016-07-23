@@ -6,7 +6,7 @@
 #    By: aderragu <aderragu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/21 17:34:59 by aderragu          #+#    #+#              #
-#    Updated: 2015/12/28 11:37:38 by aderragu         ###   ########.fr        #
+#    Updated: 2016/07/23 18:56:37 by lbaudran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@
 
 SRC_PATH = ./src/
 SRC_NAME = 	main.c\
+			recup_map.c\
+			modif_list.c\
 
 OBJ = $(SRC_NAME:.c=.o)
 
