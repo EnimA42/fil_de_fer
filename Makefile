@@ -14,13 +14,8 @@
 
 SRC_PATH = ./src/
 SRC_NAME = 	main.c\
-<<<<<<< HEAD
 			modif_list.c\
 			recup_map.c\
-=======
-			recup_map.c\
-			modif_list.c\
->>>>>>> fee7a10befb963abf98e099d5e9c351dead33687
 
 OBJ = $(SRC_NAME:.c=.o)
 
