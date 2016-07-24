@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/23 18:44:07 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/07/23 18:53:47 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ t_list		*create_elem(t_list *begin);
 char		*ft_str_alloc_cpy(char *tab, char *tmp);
 char		**ft_join2(char **tab, char **tmp);
 char		**ft_join(char **tab, char **tmp);
-void		recup_map(t_list **begin, char **argv);
-
-
-
+void		recup_map(t_list *begin, char **argv);
 
 #endif
