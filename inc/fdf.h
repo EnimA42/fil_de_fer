@@ -30,13 +30,14 @@ typedef struct 		s_data
 {
 	void			*init;
 	void			*win;
+	void			*img;
 }					t_data;
 
-t_list		*create_list(t_list *begin);
-t_list		*create_elem(t_list *begin);
-char		*ft_str_alloc_cpy(char *tab, char *tmp);
-char		**ft_join2(char **tab, char **tmp);
-char		**ft_join(char **tab, char **tmp);
-void		recup_map(t_list *begin, char **argv);
+t_list				*create_list(t_list *begin);
+t_list				*create_elem(t_list *begin);
+char				*ft_str_alloc_cpy(char *tab, char *tmp);
+char				**ft_join2(char **tab, char **tmp);
+char				**ft_join(char **tab, char **tmp);
+void				recup_map(t_list *begin, char **argv);
 
 #endif
