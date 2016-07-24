@@ -15,16 +15,22 @@
 
 #include <mlx.h>
 #include <fcntl.h>
-#include <../lib/libft/includes/libft.h>
+#include <libft.h>
 #include <stdio.h>
 
 typedef struct		s_list
 {
-	int		x;
-	int		y;
-	struct s_list *next;
-	struct s_list *prev;
+	int				x;
+	int				y;
+	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
+
+typedef struct 		s_data
+{
+	void			*init;
+	void			*win;
+}					t_data;
 
 t_list		*create_list(t_list *begin);
 t_list		*create_elem(t_list *begin);

@@ -10,25 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include <fdf.h>
 
 int				key_func(int key, void *param)
 {
-	printf("je rentre %d\n", key);
+	if (key == 12)
+	{
+		mlx_destroy_window(((t_data*)param)->init, ((t_data*)param)->win);
+		exit(1);
+	}
 	return (1);
 }
 
-int 			main()
+int 			main(int argc, char **argv)
 {
-	void		*mlx_i;
-	void		*win;
+	t_data		data;
 	t_list		*begin;
 
-	begin = create_list(begin);
-	recup_map(&begin, argv);
-	mlx_i = mlx_init();
-	win = mlx_new_window(mlx_i, 400, 400, "test");
-	mlx_key_hook(win, key_func, 0);
-	mlx_loop(mlx_i);
+	//begin = create_list(begin);
+	//recup_map(&begin, argv);
+	data.init = mlx_init();
+	data.win = mlx_new_window(data.init, 400, 400, "test");
+	mlx_key_hook(data.win, key_func, &data);
+	mlx_loop(data.init);
 	return (0);
 }
