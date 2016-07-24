@@ -34,10 +34,6 @@ int 			main(int argc, char **argv)
 	if (argc == 1)
 		return(0);
 	begin = create_list(begin);
-	recup_map(begin, argv);
-	mlx_i = mlx_init();
-	win = mlx_new_window(mlx_i, 400, 400, "test");
-	mlx_key_hook(win, key_func, 0);
-	mlx_loop(mlx_i);
+	//recup_map(begin, argv);
 	return (0);
 }
