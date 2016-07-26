@@ -6,115 +6,58 @@
 /*   By: lbaudran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 15:33:23 by lbaudran          #+#    #+#             */
-/*   Updated: 2016/07/23 18:29:56 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/07/26 17:58:24 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int			ft_str2len(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return (0);
-	while (tab[i])
-		i++;
-	return (i);
-}
-
-char		*ft_str_alloc_cpy(char *tab, char *tmp)
-{
-	tab = (char *)malloc(ft_strlen(tmp) + 1 *sizeof(char));
-	ft_bzero(tab, ft_strlen(tmp + 1));
-	ft_strcpy(tab, tmp);
-	free(tmp);
-	return (tab);
-}
-
-char		**ft_join2(char **tab, char **tmp)
-{
-	char	**str;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	str = (char **)malloc((ft_str2len(tmp) + ft_str2len(tab) + 1)
-			* sizeof(char *));
-	while (tab[i])
-	{
-		str[i] = ft_str_alloc_cpy(str[i], tmp[i]);
-		i++;
-
-	}
-	i++;
-	while (tmp[j])
-	{
-		str[i] = ft_str_alloc_cpy(str[i], tmp[j]);
-		i++;
-		j++;
-	}
-	free(tab);
-	free(tmp);
-	return (str);
-
-}
-
-char		**ft_join(char **tab, char **tmp)
+t_list		*ft_join(t_list *begin, char **tmp, int y)
 {
 	int		i;
-	int		y;
+	t_list *elem;
+	int z_vue = 200;
 
 	i = 0;
-	y = 0;
-	if (!tab)
+	while (tmp[i])
 	{
-		tab = (char **)malloc((ft_str2len(tmp) + 1)*sizeof(char *));
-		while (tmp[i])
-		{
-			tab[i] = NULL;
-			tab[i] = ft_str_alloc_cpy(tab[i], tmp[i]);
-			i++;
-		}
-		free(tmp);
-		return (tab);
+		elem = create_elem(begin);
+		elem->base_x = i;
+		elem->base_y = y;
+		elem->x = (z_vue * ((i*15) - 200)) / (z_vue + ft_atoi(tmp[i])) + z_vue;
+		elem->y = (z_vue * ((y*15) - 200)) / (z_vue + ft_atoi(tmp[i])) + z_vue;
+//		elem->x = (1 * ((i * 10) - 200 + 1)) / (1 + ft_atoi(tmp[i])) + 301;
+//		elem->y = (1 * ((y * 10)- 200 + 1)) / (1 + ft_atoi(tmp[i])) + 301;
+		i++;
 	}
-	return(ft_join2(tab, tmp));
+	free (tmp);
+	return (begin);
 }
 
-void		recup_map(t_list *begin, char **argv)
+t_list		*recup_map(t_list *begin, char **argv)
 {
 	int		fd;
 	char	*line;
-	char	**tab;
-	int		i[2];
+	char	**tmp;
+	int		y;
 	t_list	*elem;
-	char **tmp;
 
-	tab = NULL;
-	i[0] = 0;
-	i[1] = 0;
+	elem = begin;
+
+	y = 0;
 	fd = open(argv[1], O_RDONLY);
 	while (get_next_line(fd, &line))
 	{
 		tmp = ft_strsplit(line, ' ');
-		tab = ft_join(tab, tmp);
-		printf("%s",line);
+		begin = ft_join(begin, tmp, y);
+		y++;
 	}
-//		tab = ft_join(tab, ft_strsplit(line, ' '));
-	while (tab[i[0]])
+	while (elem)
 	{
-		while (tab[i[0]][i[1]])
-		{
-		printf("%c\n", tab[i[0]][i[1]]);
-//			elem = create_elem(begin);
-//			elem->x = i[0];
-//			elem->y = i[1];
-			i[1]++;
-		}
-		i[0]++;
-		i[1] = 0;
+		printf("elem->x = %d ", elem->base_x);
+		printf("elem->y = %d ", elem->base_y);
+		printf("\n");
+		elem = elem->next;
 	}
+	return (begin);
 }
