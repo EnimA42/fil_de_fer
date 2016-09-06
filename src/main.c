@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/07/26 17:53:50 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/06 13:57:41 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int 			main(int argc, char **argv)
 		return(0);
 	begin = create_list(begin);
 	begin = recup_map(begin, argv);
+	add_point(begin);
 	elem = begin;
 	data.init = mlx_init();
 	data.win = mlx_new_window(data.init, 400, 400, "test");
