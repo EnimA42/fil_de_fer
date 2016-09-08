@@ -15,8 +15,11 @@
 
 #include <mlx.h>
 #include <fcntl.h>
+#include <maths.h>
 #include <libft.h>
 #include <stdio.h>
+
+# define ZOOM 20
 
 typedef struct		s_list
 {
@@ -26,6 +29,8 @@ typedef struct		s_list
 	int				base_y;
 	struct s_list	*next;
 	struct s_list	*prev;
+	struct s_list	*up;
+	struct s_list	*down;
 }					t_list;
 
 typedef struct 		s_data
@@ -37,7 +42,7 @@ typedef struct 		s_data
 
 t_list				*create_list(t_list *begin);
 t_list				*create_elem(t_list *begin);
-t_list				*add_point(t_list *begin)
+t_list				*add_point(t_list *begin);
 
 t_list				*ft_join(t_list *begin, char **tmp, int y);
 t_list				*recup_map(t_list *begin, char **argv);

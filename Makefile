@@ -37,7 +37,7 @@ LIB = $(addprefix $(LIB_PATH),$(LIB_NAME))
 
 $(NAME): $(SRC)
 	@make -C $(LIB_PATH)libft
-	@$(CC) $(SRC) -o $(NAME) -I $(INC_PATH) -I $(INC_PATH_L) $(LIB_PATH)libft/libft.a $(MLX)
+	@$(CC) -g $(SRC) -o $(NAME) -I $(INC_PATH) -I $(INC_PATH_L) $(LIB_PATH)libft/libft.a $(MLX)
 	@echo "Compilation success"
 
 all: $(NAME)

@@ -21,6 +21,8 @@ t_list		*create_list(t_list *begin)
 	begin->up = NULL;
 	begin->x = 0;
 	begin->y = 0;
+	begin->base_x = 0;
+	begin->base_y = 0;
 	return (begin);
 }
 
@@ -38,22 +40,28 @@ t_list		*create_elem(t_list *begin)
 	elem->next->next = NULL;
 	elem->next->down = NULL;
 	elem->next->up = NULL;
+	elem->next->base_x = 0;
+	elem->next->base_y = 0;
 	return (elem->next);
 }
 
-t_list		*add_point(t_list *begin)
-{
-	t_list	*elem;
-	t_list	*tmp;
+// t_list		*add_point(t_list *begin)
+// {
+// 	t_list	*elem;
+// 	t_list	*tmp;
+// 	int i = 0;
 
-	elem = begin;
-	while (elem)
-	{
-		tmp = elem;
-		while (tmp && (tmp->y != (elem->y) + 1 && tmp->x != elem->x))
-			tmp = tmp->next;
-		elem->down = tmp;
-		tmp->up = elem;
-	}
-	return (begin);
-}
+// 	elem = begin;
+// 	while (elem)
+// 	{
+// 		tmp = elem;
+// 		tmp = tmp->next;
+// 		while (tmp && tmp->base_y != (elem->base_y) + 1 && tmp->base_x == elem->base_x)
+// 			tmp = tmp->next;
+// 		elem->down = tmp;
+// 		if (tmp)
+// 			tmp->up = elem;
+// 		elem = elem->next;
+// 	}
+// 	return (begin);
+// }

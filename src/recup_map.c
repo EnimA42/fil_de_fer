@@ -12,6 +12,21 @@
 
 #include <fdf.h>
 
+void		rotation(t_list *begin, int z)
+{
+	double m_rot_x[3][3];
+
+	m_rot_x[0][0] = 1;
+	m_rot_x[0][1] = 
+	m_rot_x[0][2] = 
+	m_rot_x[1][0] = 
+	m_rot_x[1][1] = 
+	m_rot_x[1][2] = 
+	m_rot_x[2][0] = 
+	m_rot_x[2][1] =
+	m_rot_x[2][2] =  
+}
+
 t_list		*ft_join(t_list *begin, char **tmp, int y)
 {
 	int		i;
@@ -24,10 +39,9 @@ t_list		*ft_join(t_list *begin, char **tmp, int y)
 		elem = create_elem(begin);
 		elem->base_x = i;
 		elem->base_y = y;
-		elem->x = (z_vue * ((i*15) - 200)) / (z_vue + ft_atoi(tmp[i])) + z_vue;
-		elem->y = (z_vue * ((y*15) - 200)) / (z_vue + ft_atoi(tmp[i])) + z_vue;
-//		elem->x = (1 * ((i * 10) - 200 + 1)) / (1 + ft_atoi(tmp[i])) + 301;
-//		elem->y = (1 * ((y * 10)- 200 + 1)) / (1 + ft_atoi(tmp[i])) + 301;
+		rotation(begin, ft_atoi(tmp[i]));
+		elem->x = (z_vue * ((i * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
+		elem->y = (z_vue * ((y * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
 		i++;
 	}
 	free (tmp);
@@ -52,12 +66,12 @@ t_list		*recup_map(t_list *begin, char **argv)
 		begin = ft_join(begin, tmp, y);
 		y++;
 	}
-	while (elem)
-	{
-		printf("elem->x = %d ", elem->base_x);
-		printf("elem->y = %d ", elem->base_y);
-		printf("\n");
-		elem = elem->next;
-	}
+	// while (elem)
+	// {
+	// 	printf("elem->x = %d ", elem->base_x);
+	// 	printf("elem->y = %d ", elem->base_y);
+	// 	printf("\n");
+	// 	elem = elem->next;
+	// }
 	return (begin);
 }
