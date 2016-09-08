@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/08 12:43:16 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/08 16:42:13 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,21 @@ int 			main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
+	data.i = 0;
 	begin = create_list(begin);
-	begin = recup_map(begin, argv);
+	begin = recup_map(begin, argv, &data);
 	add_point(begin);
 	elem = begin->next;
 	data.init = mlx_init();
-	data.win = mlx_new_window(data.init, 400, 400, "test");
-	data.img = mlx_new_image(data.init, 400, 400);
+	data.win = mlx_new_window(data.init, 1600, 1600, "test");
+	data.img = mlx_new_image(data.init, 1600, 1600);
 	image = mlx_get_data_addr(data.img, &c, &l, &e);
 	while (elem)
 	{
+	printf("elem->x = %d elem->y = %d\n", elem->x, elem->y);
 		put_pixel(image, elem->x, elem->y, col);
 		if (elem->next && elem->y != elem->next->y - ZOOM)
 			ligne(image, col, elem->x, elem->y, elem->next->x, elem->next->y);
-		elem2 = elem->next;
 		if (elem->down)
 			ligne(image, col, elem->x, elem->y, elem->down->x, elem->down->y);
 		elem = elem->next;

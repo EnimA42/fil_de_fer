@@ -6,7 +6,7 @@
 /*   By: lbaudran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 15:33:23 by lbaudran          #+#    #+#             */
-/*   Updated: 2016/09/08 12:28:11 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/08 17:00:28 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@
 	m_rot_x[2][2] =  
 }
 */
-t_list		*ft_join(t_list *begin, char **tmp, int y)
+
+t_list		*ft_join(t_list *begin, char **tmp, int y, t_data *data)
 {
 	int		i;
 	t_list *elem;
-	int z_vue = 200;
+	int z_vue = 800;
+//	ZOOM = (MAX_LONGUEUR || MAX_LARGEUR) / 800;
 
 	i = 0;
 	while (tmp[i])
@@ -40,15 +42,18 @@ t_list		*ft_join(t_list *begin, char **tmp, int y)
 		elem->base_x = i;
 		elem->base_y = y;
 //		rotation(begin, ft_atoi(tmp[i]));
-		elem->x = (z_vue * ((i * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
-		elem->y = (z_vue * ((y * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
+		elem->x = (z_vue * ((i * ZOOM) - 800)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
+		elem->y = (z_vue * ((y * ZOOM) - 800)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
 		i++;
-	}
+	}// probleme pour zoom,hauteur calcule apres
+	if (data->i != 0 && i != data->i)
+		exit (write(1, "Error map", 9));
+	data->i = i;
 	free (tmp);
 	return (begin);
 }
 
-t_list		*recup_map(t_list *begin, char **argv)
+t_list		*recup_map(t_list *begin, char **argv, t_data *data)
 {
 	int		fd;
 	char	*line;
@@ -63,18 +68,10 @@ t_list		*recup_map(t_list *begin, char **argv)
 	while (get_next_line(fd, &line))
 	{
 		tmp = ft_strsplit(line, ' ');
-		begin = ft_join(begin, tmp, y);
+		begin = ft_join(begin, tmp, y, data);
 		y++;
 	}
-	 while (elem)
-	 {
-		if (elem->down)
-		{
-	 	printf("elem->x = %d //elem->down = %d", elem->base_x, elem->down->base_x);
-	 	printf("elem->y = %d //elem->down = %d", elem->base_y, elem->down->base_y);
-		}
-	 	printf("\n");
-	 	elem = elem->next;
-	 }
+	if (data->i < y)
+		data->i = y;
 	return (begin);
 }
