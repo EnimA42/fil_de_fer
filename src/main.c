@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/06 13:57:41 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/08 12:43:16 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,28 +65,6 @@ void ligne(char *image, int col, int xi,int yi,int xf,int yf)
       put_pixel(image, x, y, col) ; } }
 }
 
-void colonne(char *image, int col, int xi,int yi,int xf,int yf)
-{
-	int dx,dy,cumul,x,y ;
-	x = xi;
-	y = yi;
-	dx = xf - xi;
-	dy = yf - yi;
-	cumul = dx / 2;
-	y = yi + 1;
-	while (y <= yf) 
-	{
- 		cumul += dx;
-		if ( cumul >= dy )
-		{
-			cumul -= dx;
-			y += 1; 
-		}
-		put_pixel(image, x, y, col);
-		y++; 
-	}
-}
-
 int 			main(int argc, char **argv)
 {
 	t_data		data;
@@ -105,7 +83,7 @@ int 			main(int argc, char **argv)
 		return (0);
 	begin = create_list(begin);
 	begin = recup_map(begin, argv);
-	//add_point(begin);
+	add_point(begin);
 	elem = begin->next;
 	data.init = mlx_init();
 	data.win = mlx_new_window(data.init, 400, 400, "test");
@@ -117,10 +95,8 @@ int 			main(int argc, char **argv)
 		if (elem->next && elem->y != elem->next->y - ZOOM)
 			ligne(image, col, elem->x, elem->y, elem->next->x, elem->next->y);
 		elem2 = elem->next;
-		while (elem2 && elem2->x != elem->x && elem2->y != elem2->y + 1)
-			elem2 = elem2->next;
-		if (elem2)
-			ligne(image, col, elem->x, elem->y, elem2->x, elem2->y);
+		if (elem->down)
+			ligne(image, col, elem->x, elem->y, elem->down->x, elem->down->y);
 		elem = elem->next;
 	}
 	mlx_put_image_to_window(data.init, data.win, data.img, 1, 1);
