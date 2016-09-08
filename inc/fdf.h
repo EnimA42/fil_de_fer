@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/06 13:59:00 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/08 12:23:45 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <mlx.h>
 #include <fcntl.h>
-#include <maths.h>
+#include <math.h>
 #include <libft.h>
 #include <stdio.h>
 

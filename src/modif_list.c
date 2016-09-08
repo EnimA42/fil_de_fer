@@ -6,7 +6,7 @@
 /*   By: lbaudran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 15:47:58 by lbaudran          #+#    #+#             */
-/*   Updated: 2016/09/06 13:58:47 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/08 12:43:44 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,25 @@ t_list		*create_elem(t_list *begin)
 	return (elem->next);
 }
 
-// t_list		*add_point(t_list *begin)
-// {
-// 	t_list	*elem;
-// 	t_list	*tmp;
-// 	int i = 0;
+t_list		*add_point(t_list *begin)
+{
+	t_list	*elem;
+	t_list	*tmp;
+	int i = 0;
 
-// 	elem = begin;
-// 	while (elem)
-// 	{
-// 		tmp = elem;
-// 		tmp = tmp->next;
-// 		while (tmp && tmp->base_y != (elem->base_y) + 1 && tmp->base_x == elem->base_x)
-// 			tmp = tmp->next;
-// 		elem->down = tmp;
-// 		if (tmp)
-// 			tmp->up = elem;
-// 		elem = elem->next;
-// 	}
-// 	return (begin);
-// }
+	elem = begin;
+	while (elem)
+	{
+		tmp = elem;
+		tmp = tmp->next;
+		while (tmp && (tmp->base_y != (elem->base_y + 1) || tmp->base_x != elem->base_x))
+			tmp = tmp->next;
+		if (tmp)
+		{
+			elem->down = tmp;
+			tmp->up = elem;
+		}
+		elem = elem->next;
+	}
+	return (begin);
+}
