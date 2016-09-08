@@ -12,19 +12,34 @@
 
 #include <fdf.h>
 
-void		rotation(t_list *begin, int z)
+int		rotation(t_list *begin, int z)
 {
-	double m_rot_x[3][3];
+	double	m_rot_x[3][3];
+	t_list	*tmp;
+	int		x;
+	int		y;
+	int		ret_z;
 
+	x = tmp->x;
+	y = tmp->y;
+	tmp = begin->next;
 	m_rot_x[0][0] = 1;
-	m_rot_x[0][1] = 
-	m_rot_x[0][2] = 
-	m_rot_x[1][0] = 
-	m_rot_x[1][1] = 
-	m_rot_x[1][2] = 
-	m_rot_x[2][0] = 
-	m_rot_x[2][1] =
-	m_rot_x[2][2] =  
+	m_rot_x[0][1] = 0;
+	m_rot_x[0][2] = 0;
+	m_rot_x[1][0] = 0;
+	m_rot_x[1][1] = cos(90);
+	m_rot_x[1][2] = -sin(90);
+	m_rot_x[2][0] = 0;
+	m_rot_x[2][1] = sin(90);
+	m_rot_x[2][2] = cos(90);
+	while (tmp)
+	{
+		tmp->x = m_rot_x[0][0] * tmp->x + m_rot_x[0][1] * tmp->y + m_rot_x[0][2] * z;
+		tmp->y = m_rot_x[1][0] * tmp->x + m_rot_x[1][1] * tmp->y + m_rot_x[1][2] * z;
+		ret_z = m_rot_x[2][0] * tmp->x + m_rot_x[2][1] * tmp->y + m_rot_x[2][2] * z;;
+		tmp = tmp->next;
+	}
+	return (ret_z);
 }
 
 t_list		*ft_join(t_list *begin, char **tmp, int y)
@@ -32,6 +47,7 @@ t_list		*ft_join(t_list *begin, char **tmp, int y)
 	int		i;
 	t_list *elem;
 	int z_vue = 200;
+	int z;
 
 	i = 0;
 	while (tmp[i])
@@ -39,9 +55,9 @@ t_list		*ft_join(t_list *begin, char **tmp, int y)
 		elem = create_elem(begin);
 		elem->base_x = i;
 		elem->base_y = y;
-		rotation(begin, ft_atoi(tmp[i]));
-		elem->x = (z_vue * ((i * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
-		elem->y = (z_vue * ((y * ZOOM) - 200)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
+		z = rotation(begin, ft_atoi(tmp[i]));
+		elem->x = (z_vue * ((i * ZOOM) - 200)) / (z_vue - z) + z_vue;
+		elem->y = (z_vue * ((y * ZOOM) - 200)) / (z_vue - z) + z_vue;
 		i++;
 	}
 	free (tmp);
