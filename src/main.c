@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/09 13:16:05 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/09 13:57:59 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ int 			main(int argc, char **argv)
 	t_data		data;
 	t_list		*begin;
 	char		*image;
-	int			c = 0x00FFFFFF;
-	int			col = 0x00FFFF00;
-	int			l = 400;
 	int			e = 0;
 	int			x = 0;
 	int			y = 0;
@@ -82,6 +79,9 @@ int 			main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	data.i = 0;
+	data.l = 400;
+	data.c = 0x00FFFFFF;
+	data.col = 0x00FFFF00;
 	begin = create_list(begin);
 	begin = recup_map(begin, argv, &data);
 	add_point(begin);
@@ -89,15 +89,15 @@ int 			main(int argc, char **argv)
 	data.init = mlx_init();
 	data.win = mlx_new_window(data.init, 1600, 1600, "test");
 	data.img = mlx_new_image(data.init, 1600, 1600);
-	image = mlx_get_data_addr(data.img, &c, &l, &e);
+	image = mlx_get_data_addr(data.img, &data.c, &data.l, &e);
 	while (elem)
 	{
 	printf("elem->x = %d elem->y = %d\n", elem->x, elem->y);
 //		put_pixel(image, elem->x, elem->y, col);
 		if (elem->next && elem->base_y == elem->next->base_y) // corrige pour tous les zooms
-			ligne(image, col, elem->x, elem->y, elem->next->x, elem->next->y);
+			ligne(image, data.col, elem->x, elem->y, elem->next->x, elem->next->y);
 		if (elem->down)
-			ligne(image, col, elem->x, elem->y, elem->down->x, elem->down->y);
+			ligne(image, data.col, elem->x, elem->y, elem->down->x, elem->down->y);
 		elem = elem->next;
 	}
 	mlx_put_image_to_window(data.init, data.win, data.img, 1, 1);

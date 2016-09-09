@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:34:29 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/09 12:33:15 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/09 13:56:35 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct		s_list
 
 typedef struct 		s_data
 {
+	int				l;
+	int				c;
+	int				col;
 	int				i;
 	void			*init;
 	void			*win;
