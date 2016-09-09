@@ -6,7 +6,7 @@
 /*   By: lbaudran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 15:47:58 by lbaudran          #+#    #+#             */
-/*   Updated: 2016/09/08 12:43:44 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/09 13:30:28 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ t_list		*add_point(t_list *begin)
 {
 	t_list	*elem;
 	t_list	*tmp;
-	int i = 0;
 
 	elem = begin;
 	while (elem)

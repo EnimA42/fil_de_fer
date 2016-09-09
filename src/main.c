@@ -6,7 +6,7 @@
 /*   By: aderragu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 16:31:04 by aderragu          #+#    #+#             */
-/*   Updated: 2016/09/08 16:42:13 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/09 13:16:05 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int				key_func(int key, void *param)
 int				put_pixel(char *image, int x, int y, int color)
 {
 
-	image[0 + x * 4 + y * 1600] = color >> 0;
-	image[1 + x * 4 + y * 1600] = color >> 8;
-	image[2 + x * 4 + y * 1600] = color >> 16;
-	image[3 + x * 4 + y * 1600] = color >> 24;
+	image[0 + x * 4 + y * 6400] = color >> 0;
+	image[1 + x * 4 + y * 6400] = color >> 8;
+	image[2 + x * 4 + y * 6400] = color >> 16;
+	image[3 + x * 4 + y * 6400] = color >> 24;
 	return (1);
 }
 
@@ -93,8 +93,8 @@ int 			main(int argc, char **argv)
 	while (elem)
 	{
 	printf("elem->x = %d elem->y = %d\n", elem->x, elem->y);
-		put_pixel(image, elem->x, elem->y, col);
-		if (elem->next && elem->y != elem->next->y - ZOOM)
+//		put_pixel(image, elem->x, elem->y, col);
+		if (elem->next && elem->base_y == elem->next->base_y) // corrige pour tous les zooms
 			ligne(image, col, elem->x, elem->y, elem->next->x, elem->next->y);
 		if (elem->down)
 			ligne(image, col, elem->x, elem->y, elem->down->x, elem->down->y);
