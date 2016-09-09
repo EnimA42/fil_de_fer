@@ -6,7 +6,7 @@
 /*   By: lbaudran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 15:33:23 by lbaudran          #+#    #+#             */
-/*   Updated: 2016/09/08 17:03:47 by lbaudran         ###   ########.fr       */
+/*   Updated: 2016/09/09 12:36:40 by lbaudran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,11 @@ int		rotation(t_list *begin, int z)
 	}
 	return (ret_z);
 }
-<<<<<<< HEAD
-*/
 
 t_list		*ft_join(t_list *begin, char **tmp, int y, t_data *data)
 {
 	int		i;
-	t_list *elem;
-	int z_vue = 800;
+	t_list	*elem;
 //	ZOOM = (MAX_LONGUEUR || MAX_LARGEUR) / 800;
 	int z;
 	i = 0;
@@ -58,15 +55,31 @@ t_list		*ft_join(t_list *begin, char **tmp, int y, t_data *data)
 		elem->base_x = i;
 		elem->base_y = y;
 //		z = rotation(begin, ft_atoi(tmp[i]));
-		elem->x = (z_vue * ((i * ZOOM) - 800)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
-		elem->y = (z_vue * ((y * ZOOM) - 800)) / (z_vue - ft_atoi(tmp[i])) + z_vue;
-		z = ft_atoi(tmp[i]);
+		elem->z = ft_atoi(tmp[i]);
+//		elem->x = (z_vue * ((i * ZOOM) - 800)) / (z_vue - elem->z) + z_vue;
+//		elem->y = (z_vue * ((y * ZOOM) - 800)) / (z_vue - elem->z) + z_vue;
 		i++;
 	}// probleme pour zoom,hauteur calcule apres
 	if (data->i != 0 && i != data->i)
 		exit (write(1, "Error map", 9));
 	data->i = i;
 	free (tmp);
+	return (begin);
+}
+
+t_list		*calcul_coord(t_list *begin, t_data *data)
+{
+	t_list		*elem;
+//	int			zoom = data->i / 800; mauvais calcul
+	int zoom = 800 / data->i;
+	int			z_vue = 800;
+	elem = begin->next;
+	while (elem)
+	{
+		elem->x = (z_vue * ((elem->base_x * zoom) - 800)) / (z_vue - elem->z) + z_vue;
+		elem->y = (z_vue * ((elem->base_y * zoom) - 800)) / (z_vue - elem->z) + z_vue;
+		elem = elem->next;
+	}
 	return (begin);
 }
 
@@ -90,5 +103,6 @@ t_list		*recup_map(t_list *begin, char **argv, t_data *data)
 	}
 	if (data->i < y)
 		data->i = y;
+	calcul_coord(begin, data);
 	return (begin);
 }
